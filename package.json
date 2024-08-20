@@ -1,0 +1,19 @@
+{
+    "name": "com.yunasawa.ynl.effect",
+    "displayName": "YNL - Effect",
+    "version": "1.0.0",
+    "unity": "2022.3",
+    "description": "YNL - Effect provides you Effect, Shader extensions.",
+    "keywords": [
+        "yunasawa",
+        "effect",
+        "extensions",
+        "shader"
+    ],
+    "category": "Effect",
+    "author": {
+        "name": "Yunasawa",
+        "email": "yunasawa200@gmail.com",
+        "url": "https://github.com/Yunasawa"
+    }
+}
