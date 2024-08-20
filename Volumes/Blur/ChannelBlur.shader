@@ -4,7 +4,7 @@ Shader "YNL/Effect/ChannelBlur"
     {
 		_MainTex("Texture", 2D) = "white" {}
 		_Spread("Standard Deviation (Spread)", Float) = 0
-		_Strength("Grid Size", Integer) = 1
+		_Strength("Strength", Integer) = 1
     }
     SubShader
     {
@@ -76,7 +76,6 @@ Shader "YNL/Effect/ChannelBlur"
 				{
 					float gauss = gaussian(x);
 					gridSum += gauss;
-
 					
 					float2 uvRed = i.uv + float2(_MainTex_TexelSize.x * x, 0.0f);
 					col.r += gauss * tex2D(_MainTex, uvRed).r;

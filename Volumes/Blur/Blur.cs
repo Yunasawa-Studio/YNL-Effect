@@ -14,7 +14,7 @@ namespace YNL.Effects.Volumes
         public BlurTypeParameter Type = new(BlurType.GaussianBlur);
 
         [Tooltip("Standard deviation (spread) of the blur. Grid size is approx. 3x larger.")]
-        public ClampedFloatParameter Strength = new ClampedFloatParameter(0, 0, 100);
+        public ClampedFloatParameter Strength = new ClampedFloatParameter(0, 0, 30);
 
         public bool IsActive() => (Strength.value > 0.0f) && active;
         public bool IsTileCompatible() => false;

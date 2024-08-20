@@ -3,7 +3,7 @@ Shader "YNL/Effect/BoxBlur"
     Properties
     {
         _MainTex("Texture", 2D) = "white" {}
-        _Strength("Grid Size", Integer) = 1
+        _Strength("Strength", Integer) = 1
     }
 
     SubShader

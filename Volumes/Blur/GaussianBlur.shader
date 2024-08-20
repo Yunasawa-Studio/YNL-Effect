@@ -4,7 +4,7 @@ Shader "YNL/Effect/GaussianBlur"
     {
 		_MainTex("Texture", 2D) = "white" {}
 		_Spread("Standard Deviation (Spread)", Float) = 0
-		_Strength("Grid Size", Integer) = 1
+		_Strength("Strength", Integer) = 1
     }
     SubShader
     {
@@ -76,42 +76,21 @@ Shader "YNL/Effect/GaussianBlur"
 				{
 					float gauss = gaussian(x);
 					gridSum += gauss;
-					float2 uv = i.uv + float2(_MainTex_TexelSize.x * x, 0.0f);
+
+					float2 uv = i.uv + float2(_MainTex_TexelSize.x * x * 4, 0.0f);
 					col += gauss * tex2D(_MainTex, uv).xyz;
 				}
-
-				col /= gridSum;
-
-				return float4(col, 1.0f);
-			}
-            ENDHLSL
-        }
-
-		Pass
-        {
-			Name "Vertical"
-
-            HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag_vertical
-
-            float4 frag_vertical (v2f i) : SV_Target
-			{
-				float3 col = float3(0.0f, 0.0f, 0.0f);
-				float gridSum = 0.0f;
-
-				int upper = ((_Strength - 1) / 2);
-				int lower = -upper;
 
 				for (int y = lower; y <= upper; ++y)
 				{
 					float gauss = gaussian(y);
 					gridSum += gauss;
-					float2 uv = i.uv + float2(0.0f, _MainTex_TexelSize.y * y);
+					float2 uv = i.uv + float2(0.0f, _MainTex_TexelSize.y * y * 4);
 					col += gauss * tex2D(_MainTex, uv).xyz;
 				}
 
 				col /= gridSum;
+
 				return float4(col, 1.0f);
 			}
             ENDHLSL
