@@ -2,119 +2,61 @@ Shader "YNL/Effect/GaussianBlur"
 {
     Properties
     {
-		_MainTex("Texture", 2D) = "white" {}
-		_Spread("Standard Deviation (Spread)", Float) = 0
-		_GridSize("Grid Size", Integer) = 1
+        _MainTex("Texture", 2D) = "white" {}
+        _GridSize("Grid Size", Integer) = 1
     }
+
     SubShader
     {
-        Tags
-		{
-			"RenderType" = "Opaque"
-			"RenderPipeline" = "UniversalPipeline"
-		}
-
-		HLSLINCLUDE
-
-		#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-
-		#define E 2.71828f
-
-		sampler2D _MainTex;
-
-		CBUFFER_START(UnityPerMaterial)
-			float4 _MainTex_TexelSize;
-			uint _GridSize;
-			float _Spread;
-		CBUFFER_END
-
-		float gaussian(int x)
-		{
-			float sigmaSqu = _Spread * _Spread;
-			return (1 / sqrt(TWO_PI * sigmaSqu)) * exp(-(x * x) / (2 * sigmaSqu));
-		}
-
-		struct appdata
-		{
-			float4 positionOS : Position;
-			float2 uv : TEXCOORD0;
-		};
-
-		struct v2f
-		{
-			float4 positionCS : SV_Position;
-			float2 uv : TEXCOORD0;
-		};
-
-		v2f vert(appdata v)
-		{
-			v2f o;
-			o.positionCS = TransformObjectToHClip(v.positionOS.xyz);
-			o.uv = v.uv;
-			return o;
-		}
-
-		ENDHLSL
-
         Pass
         {
-			Name "Horizontal"
-
-            HLSLPROGRAM
+            CGPROGRAM
             #pragma vertex vert
-            #pragma fragment frag_horizontal
+            #pragma fragment frag
+            #include "UnityCG.cginc"
 
-            float4 frag_horizontal (v2f i) : SV_Target
-			{
-				float3 col = float3(0.0f, 0.0f, 0.0f);
-				float gridSum = 0.0f;
+            struct appdata_t
+            {
+                float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
+            };
 
-				int upper = ((_GridSize - 1) / 2);
-				int lower = -upper;
+            struct v2f
+            {
+                float2 uv : TEXCOORD0;
+                float4 vertex : SV_POSITION;
+            };
 
-				for (int x = lower; x <= upper; ++x)
-				{
-					float gauss = gaussian(x);
-					gridSum += gauss;
-					float2 uv = i.uv + float2(_MainTex_TexelSize.x * x, 0.0f);
-					col += gauss * tex2D(_MainTex, uv).xyz;
-				}
+            float4 _MainTex_TexelSize;
+            sampler2D _MainTex;
+            uint _GridSize;
 
-				col /= gridSum;
+            v2f vert(appdata_t v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.uv = v.uv;
+                return o;
+            }
 
-				return float4(col, 1.0f);
-			}
-            ENDHLSL
-        }
+            half4 frag(v2f i) : SV_Target
+            {
+                half4 col = tex2D(_MainTex, i.uv);
+                half2 texelSize = _GridSize * _MainTex_TexelSize.xy;
 
-		Pass
-        {
-			Name "Vertical"
+                half4 sum = col;
+                for (int x = -1; x <= 1; ++x)
+                {
+                    for (int y = -1; y <= 1; ++y)
+                    {
+                        half2 offset = half2(x, y) * texelSize;
+                        sum += tex2D(_MainTex, i.uv + offset);
+                    }
+                }
 
-            HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag_vertical
-
-            float4 frag_vertical (v2f i) : SV_Target
-			{
-				float3 col = float3(0.0f, 0.0f, 0.0f);
-				float gridSum = 0.0f;
-
-				int upper = ((_GridSize - 1) / 2);
-				int lower = -upper;
-
-				for (int y = lower; y <= upper; ++y)
-				{
-					float gauss = gaussian(y);
-					gridSum += gauss;
-					float2 uv = i.uv + float2(0.0f, _MainTex_TexelSize.y * y);
-					col += gauss * tex2D(_MainTex, uv).xyz;
-				}
-
-				col /= gridSum;
-				return float4(col, 1.0f);
-			}
-            ENDHLSL
+                return sum / 9.0;
+            }
+            ENDCG
         }
     }
 }
