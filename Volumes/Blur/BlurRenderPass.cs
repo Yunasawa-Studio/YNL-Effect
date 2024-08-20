@@ -6,7 +6,7 @@ public class BlurRenderPass : ScriptableRenderPass
 {
     private Material _material;
     private int _blurID = Shader.PropertyToID("_Blur");
-    private RenderTargetIdentifier _source, _target;
+    private RenderTargetIdentifier _source, _target; 
     private Blur _blur;
 
     public BlurRenderPass()
