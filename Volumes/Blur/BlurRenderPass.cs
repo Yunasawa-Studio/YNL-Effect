@@ -1,17 +1,20 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 namespace YNL.Effects.Volumes
 {
-    public class GaussianBlurRenderPass : ScriptableRenderPass
+    public class BlurRenderPass : ScriptableRenderPass
     {
         private Material _material;
         private int _blurID = Shader.PropertyToID("_Blur");
         private RenderTargetIdentifier _source, _target;
-        private GaussianBlur _blur;
+        private Blur _blur;
 
-        public GaussianBlurRenderPass()
+        private Blur.BlurType _previousType = Blur.BlurType.GaussianBlur;
+
+        public BlurRenderPass()
         {
             if (!_material)
             {
@@ -30,8 +33,16 @@ namespace YNL.Effects.Volumes
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            CommandBuffer commandBuffer = CommandBufferPool.Get("Gaussian Blur RF");
-            if (_blur == null) _blur = VolumeManager.instance.stack.GetComponent<GaussianBlur>();
+            CommandBuffer commandBuffer = CommandBufferPool.Get("Blur RF");
+            if (_blur == null) _blur = VolumeManager.instance.stack.GetComponent<Blur>();
+
+            if (_previousType != _blur.Type.value)
+            {
+                if (_blur.Type == Blur.BlurType.GaussianBlur) _material = CoreUtils.CreateEngineMaterial("YNL/Effect/GaussianBlur");
+                if (_blur.Type == Blur.BlurType.BoxBlur) _material = CoreUtils.CreateEngineMaterial("YNL/Effect/BoxBlur");
+                if (_blur.Type == Blur.BlurType.ChannelBlur) _material = CoreUtils.CreateEngineMaterial("YNL/Effect/ChannelBlur");
+                _previousType = _blur.Type.value;
+            }
 
             if (_blur.IsActive())
             {
@@ -42,7 +53,7 @@ namespace YNL.Effects.Volumes
                     gridSize++;
                 }
 
-                _material.SetInteger("_GridSize", gridSize);
+                _material.SetInteger("_Strength", gridSize);
                 _material.SetFloat("_Spread", _blur.Strength.value);
 
                 commandBuffer.Blit(_source, _target, _material, 0);

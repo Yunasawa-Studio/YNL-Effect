@@ -2,9 +2,9 @@ using UnityEngine.Rendering.Universal;
 
 namespace YNL.Effects.Volumes
 {
-    public class GaussianBlurRendererFeature : ScriptableRendererFeature
+    public class BlurRendererFeature : ScriptableRendererFeature
     {
-        private GaussianBlurRenderPass _blurRenderPass;
+        private BlurRenderPass _blurRenderPass;
 
         public override void Create()
         {

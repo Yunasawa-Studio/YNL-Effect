@@ -1,10 +1,10 @@
-Shader "YNL/Effect/GaussianBlura"
+Shader "YNL/Effect/GaussianBlur"
 {
     Properties
     {
 		_MainTex("Texture", 2D) = "white" {}
 		_Spread("Standard Deviation (Spread)", Float) = 0
-		_GridSize("Grid Size", Integer) = 1
+		_Strength("Grid Size", Integer) = 1
     }
     SubShader
     {
@@ -24,7 +24,7 @@ Shader "YNL/Effect/GaussianBlura"
 
 		CBUFFER_START(UnityPerMaterial)
 			float4 _MainTex_TexelSize;
-			uint _GridSize;
+			uint _Strength;
 			float _Spread;
 		CBUFFER_END
 
@@ -69,7 +69,7 @@ Shader "YNL/Effect/GaussianBlura"
 				float3 col = float3(0.0f, 0.0f, 0.0f);
 				float gridSum = 0.0f;
 
-				int upper = ((_GridSize - 1) / 2);
+				int upper = ((_Strength - 1) / 2);
 				int lower = -upper;
 
 				for (int x = lower; x <= upper; ++x)
@@ -100,7 +100,7 @@ Shader "YNL/Effect/GaussianBlura"
 				float3 col = float3(0.0f, 0.0f, 0.0f);
 				float gridSum = 0.0f;
 
-				int upper = ((_GridSize - 1) / 2);
+				int upper = ((_Strength - 1) / 2);
 				int lower = -upper;
 
 				for (int y = lower; y <= upper; ++y)
