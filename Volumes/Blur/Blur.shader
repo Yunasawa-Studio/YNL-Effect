@@ -1,4 +1,4 @@
-Shader "PostProcessing/Blur"
+Shader "YNL/Post Processing/Blur"
 {
     Properties
     {
