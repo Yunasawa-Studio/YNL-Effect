@@ -1,4 +1,4 @@
-Shader "YNL/Post Processing/Blur"
+Shader "YNL/Effect/GaussianBlur"
 {
     Properties
     {

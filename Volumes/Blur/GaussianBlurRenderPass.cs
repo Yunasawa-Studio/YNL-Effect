@@ -2,18 +2,18 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class BlurRenderPass : ScriptableRenderPass
+public class GaussianBlurRenderPass : ScriptableRenderPass
 {
     private Material _material;
     private int _blurID = Shader.PropertyToID("_Blur");
-    private RenderTargetIdentifier _source, _target; 
-    private Blur _blur;
+    private RenderTargetIdentifier _source, _target;
+    private GaussianBlur _blur;
 
-    public BlurRenderPass()
+    public GaussianBlurRenderPass()
     {
         if (!_material)
         {
-            _material = CoreUtils.CreateEngineMaterial("YNL/Post Processing/Blur");
+            _material = CoreUtils.CreateEngineMaterial("YNL/Effect/GaussianBlur");
         }
         renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
     }
@@ -28,9 +28,8 @@ public class BlurRenderPass : ScriptableRenderPass
 
     public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
     {
-        CommandBuffer commandBuffer = CommandBufferPool.Get("Blur Render Feature");
-
-        if (_blur == null) _blur = VolumeManager.instance.stack.GetComponent<Blur>();
+        CommandBuffer commandBuffer = CommandBufferPool.Get("Gaussian Blur RF");
+        if (_blur == null) _blur = VolumeManager.instance.stack.GetComponent<GaussianBlur>();
 
         if (_blur.IsActive())
         {

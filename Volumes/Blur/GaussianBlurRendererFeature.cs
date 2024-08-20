@@ -1,12 +1,13 @@
 using UnityEngine.Rendering.Universal;
 
-public class BlurRenderFeature : ScriptableRendererFeature
+public class GaussianBlurRendererFeature : ScriptableRendererFeature
 {
-    private BlurRenderPass _blurRenderPass;
+    private GaussianBlurRenderPass _blurRenderPass;
 
     public override void Create()
     {
         _blurRenderPass = new();
+        name = "Gaussian Blur RF";
     }
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
