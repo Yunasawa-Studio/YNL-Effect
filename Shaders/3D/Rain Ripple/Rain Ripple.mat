@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8271170436935431717
+--- !u!114 &-6405708939310821723
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21,12 +21,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Rain Ripple
-  m_Shader: {fileID: -6465566751694194690, guid: 72e19644ce27d2743a16a85d343dfc9d, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 747ad8d429255234fafd2943ac4e4852, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -41,6 +41,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: e9625581ed0a68d498b20619836975da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Mask_Normal:
+        m_Texture: {fileID: 2800000, guid: f2eaa04e4252c2c438521155dc39b934, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Normal:
         m_Texture: {fileID: 2800000, guid: 3bd7f9a5819bae14297b27415e0c4819, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -50,6 +54,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RippleSheet:
+        m_Texture: {fileID: 2800000, guid: 42f0e9c76809b534e925b685456bad7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ripple_Sheet:
         m_Texture: {fileID: 2800000, guid: 42f0e9c76809b534e925b685456bad7c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -69,32 +77,32 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _Apply_Normal: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 0
+    - _Mask_Opacity: 0
     - _Mask_Speed: 1
+    - _Mask_Tiling: 1.5
     - _Puddle_Speed: 0.05
     - _Puddle_Strength: 0.1
     - _Puddle_Tiling: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RippleSpeed: 20
-    - _RippleStrength: 2
-    - _RippleTiling: 4
     - _Ripple_Speed: 20
     - _Ripple_Strength: 0.75
     - _Ripple_Tiling: 10
     - _SrcBlend: 1
     - _Surface: 0
-    - _Tiling: 10
+    - _Tiling: 20
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _RippleTiling: {r: 4, g: 4, b: 0, a: 0}
+    - _Mask_Offset: {r: -0.22, g: -0.22, b: 0, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
