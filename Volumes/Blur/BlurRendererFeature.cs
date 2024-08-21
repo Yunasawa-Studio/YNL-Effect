@@ -9,7 +9,7 @@ namespace YNL.Effects.Volumes
         public override void Create()
         {
             _blurRenderPass = new();
-            name = "Gaussian Blur RF";
+            name = "Blur RF";
         }
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)

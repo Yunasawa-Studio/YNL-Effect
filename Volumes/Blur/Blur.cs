@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace YNL.Effects.Volumes
 {
-    [System.Serializable, VolumeComponentMenuForRenderPipeline("YNL - Effect/Gaussian Blur", typeof(UniversalRenderPipeline))]
+    [System.Serializable, VolumeComponentMenuForRenderPipeline("YNL - Effect/Blur", typeof(UniversalRenderPipeline))]
     public class Blur : VolumeComponent, IPostProcessComponent
     {
         public enum BlurType { GaussianBlur, BoxBlur, ChannelBlur }
