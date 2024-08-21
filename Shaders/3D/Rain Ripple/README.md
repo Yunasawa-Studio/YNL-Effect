@@ -1,2 +1,3 @@
-<video loop="true" muted="true" src="https://github.com/user-attachments/assets/b9369d71-e51f-4397-855b-5d54b8432ea7" type="video/mp4">
-</video>
+<video src="https://github.com/user-attachments/assets/b9369d71-e51f-4397-855b-5d54b8432ea7"></video>
+
+<h1>YNL - Effect: Rain Ripple Shader</h1>
