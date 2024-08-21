@@ -27,7 +27,7 @@ Material:
   m_ValidKeywords:
   - _ALPHATEST_ON
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -50,12 +50,8 @@ Material:
         m_Texture: {fileID: 2800000, guid: f2eaa04e4252c2c438521155dc39b934, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Puddles:
-        m_Texture: {fileID: 2800000, guid: f2eaa04e4252c2c438521155dc39b934, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Ripple:
-        m_Texture: {fileID: 2800000, guid: 88d3be78c83d6504481a91c083df07a4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4ff6d27dba4691549af62208bfd3b7ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -83,22 +79,18 @@ Material:
     - _Flow: 0.01
     - _Flow_Tiling: 200
     - _Main_Tiling: 10
-    - _Puddle_Tiling: 1.5
+    - _Puddle_Tiling: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _Tiling: 10
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Main_Tiling: {r: 10, g: 10, b: 0, a: 0}
-    - _Puddle_Offset: {r: -0.22, g: -0.22, b: 0, a: 0}
-    - _Puddle_Tiling: {r: 100, g: 100, b: 0, a: 0}
-    - _Ripple_Speed: {r: 0.001, g: 0.001, b: 0, a: 0}
-    - _Ripple_Tiling: {r: 0.02, g: 0.02, b: 0, a: 0}
-    - _Smooth_Tiling: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _Puddle_Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Ripple_Speed: {r: 0.005, g: 0.005, b: 0, a: 0}
+    - _Ripple_Tiling: {r: 0.05, g: 0.05, b: 0, a: 0}
   m_BuildTextureStacks: []
