@@ -18,10 +18,6 @@ Contact us: <kbd> yunasawa200@gmail.com </kbd>
   <img width="100%" src="https://repobeats.axiom.co/api/embed/ddfcd74e355f6319cd521dcd67a915f3faaf8480.svg">
 </details>
 
-<h2> ★ Contents </h2>
-<ul>
-<li><a href="#installation"> ★ Installation </a></li>
-</ul>
 <h2><div id="installation"> ★ Installation </div></h2>
 
 <h3><i>Install from Git URL</i></h3>
@@ -33,19 +29,6 @@ https://github.com/Yunasawa-Studio/YNL-Effect.git
 
 Here is how you can do it: <a href="https://docs.unity3d.com/2019.3/Documentation/Manual/upm-ui-giturl.html"> How to install a package via Git URL </a>
 
-<h3><i>Install from OpenUPM</i></h3>
-
-You can add UPM Scrope like this:
-
-```
-Name: Yunasawa Studio
-URL: https://package.openupm.com
-Scope(s): com.yunasawa.ynl.effect
-```
-
-Here is how you can do it: <a href="https://openupm.com/docs/getting-started.html#installing-a-upm-package"> How to register a UPM scope(s) </a>
-
-After you register the scope, you can add the package by name: 
-```
-com.yunasawa.ynl.effect
-```
+<h2> ★ Features </h2>
+1: <a href="https://github.com/Yunasawa-Studio/YNL-Effect/tree/main/Shaders/3D/Rain%20Ripple">Rain Ripple Shader</a>
+2: <a href="https://github.com/Yunasawa-Studio/YNL-Effect/tree/main/Shaders/3D/Wet%20Surface">Wet Surface Shader</a>
