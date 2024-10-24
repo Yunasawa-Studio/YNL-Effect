@@ -30,5 +30,5 @@ https://github.com/Yunasawa-Studio/YNL-Effect.git
 Here is how you can do it: <a href="https://docs.unity3d.com/2019.3/Documentation/Manual/upm-ui-giturl.html"> How to install a package via Git URL </a>
 
 <h2> ★ Features </h2>
-1: <a href="https://github.com/Yunasawa-Studio/YNL-Effect/tree/main/Shaders/3D/Rain%20Ripple">Rain Ripple Shader</a>
-2: <a href="https://github.com/Yunasawa-Studio/YNL-Effect/tree/main/Shaders/3D/Wet%20Surface">Wet Surface Shader</a>
+1: <a href="https://github.com/Yunasawa-Studio/YNL-Effect/tree/main/Shaders/3D/Rain%20Ripple">Rain Ripple Shader</a><br>
+2: <a href="https://github.com/Yunasawa-Studio/YNL-Effect/tree/main/Shaders/3D/Wet%20Surface">Wet Surface Shader</a><br>
